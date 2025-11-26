@@ -3,13 +3,13 @@ Advent of Code 2025
 
 Solutions for the 2025 edition of [Advent of Code](https://adventofcode.com/).
 
-Gonna be more bleeding-edge .NET, methinks.
+Gonna be more bleeding-edge .NET, methinks. And some asm, because it's asm.
 
 
 Templates
 ---------
 
-The repo includes a couple of base templates in C# and F# for .NET 10, neither with any external dependencies. As usual the idea is to reuse common infrastructure code between solutions, only modifying functions in the puzzle file and adding more files when necessary. The setup has been further simplified from [last year's](https://github.com/lrc-se/aoc-2024) common code, with no Docker integration, but the run script remains.
+The repo includes a couple of base templates in C# and F# for .NET 10, neither with any external dependencies, plus a special one integrating x64-asm with C# ([see below](#x64-assembly)). As usual the idea is to reuse common infrastructure code between solutions, only modifying functions in the puzzle file and adding more files when necessary. The setup has been further simplified from [last year's](https://github.com/lrc-se/aoc-2024) common code, with no Docker integration, but the run script remains.
 
 Part selection has been moved from an environment variable to the first command line argument, which is recognized as follows:
 
@@ -17,7 +17,6 @@ Part selection has been moved from an environment variable to the first command 
 - `2` or `part2`: only runs part two
 
 Any other value will abort the execution. Consequently, input file selection has been shifted to the *second* command line argument.
-
 
 ### Run script
 
@@ -33,6 +32,12 @@ The templates also include a shell script *run.sh*, which will time the executio
 - `testsuffix`: suffix to add to test input filename when in test mode
 
 If the `mode` argument is omitted, the puzzle will be run in normal mode without release optimizations. Input is read from *input.txt* in normal mode, and from *input-testX.txt* in test mode where *X* is set to the value of `testsuffix`.
+
+### x64 assembly
+
+For this year's added spice I got it into my head to investigate how one can interface between x64 assembly code and C# in the context of AoC, and it actually turned out to be surprisingly straightforward. To keep things from growing too complex I decided on a hybrid solution where input loading and parsing is done in managed code and only the actual algorithm is then offloaded to native code. The asm template is very simple and does the same thing as the other two templates, namely adds (part 1) and multiplies (part 2) the numbers parsed from the input.
+
+The run script for the asm template includes build steps for assembling with NASM and linking with GoLink. Do note that these two tools need to be in the current path, and that this build chain is specific for the `win64` platform and needs to be adjusted for other platforms. The actual assembly code also uses the calling convention for `win64`, so any other implementation will have to update its register use to conform to a different calling convention. (So why a *bash* script under `win64` in the first place, then? Well, I tend to use Git Bash for all repo-related things, and AoC is no exception.)
 
 Puzzles
 -------
