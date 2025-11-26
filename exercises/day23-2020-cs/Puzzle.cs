@@ -44,7 +44,8 @@ internal class Puzzle(string rawInput) : AocPuzzle<int[], string>(rawInput)
         Span<int> pickedUp = new int[3];
         for (int i = 0; i < moves; ++i)
         {
-            PopulateCupList(pickedUp, links, links[curCup]);
+            ref int curLink = ref CollectionsMarshal.GetValueRefOrNullRef(links, curCup);
+            PopulateCupList(pickedUp, links, curLink);
             int destCup = curCup > 1 ? curCup - 1 : links.Count;
             while (pickedUp.Contains(destCup))
             {
@@ -53,7 +54,7 @@ internal class Puzzle(string rawInput) : AocPuzzle<int[], string>(rawInput)
 
             ref int lastLink = ref CollectionsMarshal.GetValueRefOrNullRef(links, pickedUp[2]);
             ref int destLink = ref CollectionsMarshal.GetValueRefOrNullRef(links, destCup);
-            curCup = links[curCup] = lastLink;
+            curCup = curLink = lastLink;
             lastLink = destLink;
             destLink = pickedUp[0];
         }
