@@ -18,7 +18,7 @@ PartOne:
 PartTwo:
         mov     eax, [rdx]
         dec     ecx
-        jz     .end
+        jnz     .end
 .loop:
         add     rdx, 4
         mul     eax, [rdx]
