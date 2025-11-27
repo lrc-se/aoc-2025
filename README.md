@@ -39,6 +39,27 @@ For this year's added spice I got it into my head to investigate how one can int
 
 The run script for the asm template includes build steps for assembling with NASM and linking with GoLink. Do note that these two tools need to be in the current path, and that this build chain is specific for the `win64` platform and needs to be adjusted for other platforms. The actual assembly code also uses the calling convention for `win64`, so any other implementation will have to update its register use to conform to a different calling convention. (So why a *bash* script under `win64` in the first place, then? Well, I tend to use Git Bash for all repo-related things, and AoC is no exception.)
 
+
+Exercises
+---------
+
+The repo also includes a few exercises, one for each target language, consisting of puzzles from previous years for which I had existing solutions:
+
+### 2024: Day 2 (x64-asm)
+
+Heavy use of registers for performance, together with some other optimization tricks. It could certainly be optimized further, especially in part 2, but I think it works well as a POC as it is; it's already extremely fast and further work would make very little practical difference seeing as how this is an early-day problem where execution times are bound to be short anyway.
+
+The same platform note as [above](#x64-assembly) applies, i.e. the implementation is specific to `win64`, the calling convention for which passes the arguments in `RCX` and `RDX` and considers `RSI` and `RDI` volatile.
+
+### 2023: Day 8 (F#)
+
+Fully functional and immutable, using built-in language features for brevity as much as I've been able.
+
+### 2020: Day 23 (C#)
+
+This is basically the direct opposite approach to the above, utilizing mutability as much as possible for performance, plus some extra optimizations.
+
+
 Puzzles
 -------
 
