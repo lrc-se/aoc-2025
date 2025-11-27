@@ -43,13 +43,13 @@ The run script for the asm template includes build steps for assembling with NAS
 Exercises
 ---------
 
-The repo also includes a few exercises, one for each target language, consisting of puzzles from previous years for which I had existing solutions:
+The repo also includes a few exercises, one for each target language, consisting of puzzles from previous years for which I had existing solutions to start from:
 
 ### 2024: Day 2 (x64-asm)
 
-Heavy use of registers for performance, together with some other optimization tricks. It could certainly be optimized further, especially in part 2, but I think it works well as a POC as it is; it's already extremely fast and further work would make very little practical difference seeing as how this is an early-day problem where execution times are bound to be short anyway.
+Heavy use of registers for performance, together with some other optimization tricks. It could certainly be optimized further, especially in part 2, but I think it works well as a POC as it is; it's already extremely fast and further work would make very little practical difference seeing as how this is an early-day problem where execution times are bound to be very short anyway.
 
-The same platform note as [above](#x64-assembly) applies, i.e. the implementation is specific to `win64`, the calling convention for which passes the arguments in `RCX` and `RDX` and considers `RSI` and `RDI` volatile.
+The same platform note as [above](#x64-assembly) applies, i.e. the implementation is specific to `win64`, the calling convention for which passes the arguments in `RCX` and `RDX` and does not consider `RSI` and `RDI` volatile.
 
 ### 2023: Day 8 (F#)
 
