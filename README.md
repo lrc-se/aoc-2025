@@ -1,7 +1,7 @@
 Advent of Code 2025
 ===================
 
-Solutions for the 2025 edition of [Advent of Code](https://adventofcode.com/).
+[Solutions](#puzzles) for the 2025 edition of [Advent of Code](https://adventofcode.com/).
 
 Gonna be more bleeding-edge .NET, methinks. And some asm, because it's asm.
 
@@ -63,4 +63,6 @@ This is basically the direct opposite approach to the above, utilizing mutabilit
 Puzzles
 -------
 
-TBA
+### Day 1 (C#)
+
+Modular arithmetic right at the start? OK then!
