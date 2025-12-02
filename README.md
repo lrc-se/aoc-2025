@@ -66,3 +66,7 @@ Puzzles
 ### Day 1 (C#)
 
 Modular arithmetic right at the start? OK then!
+
+### Day 2 (C#)
+
+Just brute-forcing this for now, since the iteration count is rather low anyway. Some basic early bailout checks, though.
