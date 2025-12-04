@@ -74,3 +74,7 @@ Just brute-forcing this for now, since the iteration count is rather low anyway.
 ### Day 3 (C#)
 
 Using a moving window for max values, with a simplified version in part 1.
+
+### Day 4 (C#)
+
+Using a hash set of coordinates to keep track of the rolls, as usual.
