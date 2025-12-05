@@ -37,8 +37,8 @@ let parseInput (rawInput: string) =
     { Ranges = sections[0] |> Array.map createRange
       Ingredients = sections[1] |> Array.map int64 }
 
-let runPartOne (input: Input) =
+let runPartOne input =
     input.Ingredients
     |> count (fun ingredient -> input.Ranges |> Array.exists (isInRange ingredient))
 
-let runPartTwo (input: Input) = input.Ranges |> countUnique
+let runPartTwo input = input.Ranges |> countUnique

@@ -25,7 +25,7 @@ let private getSteps startNode isLastNodeName input =
     loop startNode 0 |> int64
 
 [<TailCall>]
-let rec private gcd (a: int64) (b: int64) = if b = 0 then a else gcd b (a % b)
+let rec private gcd a b = if b = 0L then a else gcd b (a % b)
 
 let private lcm a b = a * b / gcd a b
 
@@ -41,9 +41,9 @@ let parseInput (rawInput: string) =
     { LeftRight = sections[0].ToCharArray();
       Nodes = loop (sections[1].Split('\n') |> Array.toList) Map.empty }
 
-let runPartOne (input: Input) = input |> getSteps input.Nodes["AAA"] ((=) "ZZZ")
+let runPartOne input = input |> getSteps input.Nodes["AAA"] ((=) "ZZZ")
 
-let runPartTwo (input: Input) =
+let runPartTwo input =
     input.Nodes.Values
     |> Seq.where _.Name.EndsWith('A')
     |> Seq.map (fun node -> getSteps node _.EndsWith('Z') input)
