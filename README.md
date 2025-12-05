@@ -78,3 +78,7 @@ Using a moving window for max values, with a simplified version in part 1.
 ### Day 4 (C#)
 
 Using a hash set of coordinates to keep track of the rolls, as usual.
+
+### Day 5 (F#)
+
+Overlaps! After a couple of false starts in part 2 I settled on a linear traversal of ascending ranges, which is actually faster than part 1.
