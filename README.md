@@ -82,3 +82,7 @@ Using a hash set of coordinates to keep track of the rolls, as usual.
 ### Day 5 (F#)
 
 Overlaps! After a couple of false starts in part 2 I settled on a linear traversal of ascending ranges, which is actually faster than part 1.
+
+### Day 6 (C#)
+
+I was a bit too trigger-happy with the input parsing in part 1, so I had to backtrack to a more generic approach for part 2. LINQ-heavy, with some GC-friendly performance enhancements. Oh, and the right-to-left direction doesn't actually matter.
