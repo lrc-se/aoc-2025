@@ -86,3 +86,7 @@ Overlaps! After a couple of false starts in part 2 I settled on a linear travers
 ### Day 6 (C#)
 
 I was a bit too trigger-happy with the input parsing in part 1, so I had to backtrack to a more generic approach for part 2. LINQ-heavy, with some GC-friendly performance enhancements. Oh, and the right-to-left direction doesn't actually matter.
+
+### Day 7 (C#)
+
+For part 1 I just went ahead and traced the beams at first, since it was easy enough. When part 2 then turned out to be another instance of the rather common graph traversal count problem I implemented a just as common memoized recursive solution with pre-computed connections, counting backwards, and then reused the connection data to arrive at the answer immediately in part 1 instead.
