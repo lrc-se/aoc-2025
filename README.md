@@ -90,3 +90,7 @@ I was a bit too trigger-happy with the input parsing in part 1, so I had to back
 ### Day 7 (C#)
 
 For part 1 I just went ahead and traced the beams at first, since it was easy enough. When part 2 then turned out to be another instance of the rather common graph traversal count problem I implemented a just as common memoized recursive solution with pre-computed connections, counting backwards, and then reused the connection data to arrive at the answer immediately in part 1 instead.
+
+### Day 8 (C#)
+
+Using a running map of individual connections and a queue-based method of generating circuits from said connections. For part 2 I simply used the same method, checking for a full circuit after every new connection, with a few extra performance shortcuts; there are likely faster ways of doing this, but it's quite fast enough as it is and gets the job done with very little extra code. The solution also handles the differing iteration counts between the test setup and the real setup by relying on the length of the input.
