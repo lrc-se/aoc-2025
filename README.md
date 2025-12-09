@@ -94,3 +94,7 @@ For part 1 I just went ahead and traced the beams at first, since it was easy en
 ### Day 8 (C#)
 
 Using a running map of individual connections and a queue-based method of generating circuits from said connections. For part 2 I simply used the same method, checking for a full circuit after every new connection, with a few extra performance shortcuts; there are likely faster ways of doing this, but it's quite fast enough as it is and gets the job done with very little extra code. The solution also handles the differing iteration counts between the test setup and the real setup by relying on the length of the input.
+
+### Day 9 (C#)
+
+Part 1 was as simple as they come, and part 2... not as much. I first tried both flood fill and edge crossing approaches, which turned out too slow and/or memory hungry, before realizing that I only needed to check the interior of the candidate rectangles for the presence of *any* edge. My first attempt at this was quite slow, but after a number of iteration-reducing additions and finally some micro-optimizations it's down to sub-second speeds. Whew.
