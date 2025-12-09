@@ -1,3 +1,4 @@
+using System.Runtime.InteropServices;
 using Coord = (int X, int Y);
 
 internal class Puzzle(string rawInput) : AocPuzzle<Coord[], long>(rawInput)
@@ -48,6 +49,7 @@ internal class Puzzle(string rawInput) : AocPuzzle<Coord[], long>(rawInput)
         }
 
         _input.Sort();
+        var tilesSpan = CollectionsMarshal.AsSpan(tiles);
         List<(Coord NW, Coord SE)> impossibleAreas = [];
         for (int i = 0; i < _input.Length - 1; ++i)
         {
@@ -63,10 +65,28 @@ internal class Puzzle(string rawInput) : AocPuzzle<Coord[], long>(rawInput)
                     ? (_input[i].Y, _input[j].Y)
                     : (_input[j].Y, _input[i].Y);
 
-                if (impossibleAreas.Any(area => startX <= area.NW.X && endX >= area.SE.X && startY <= area.NW.Y && endY >= area.SE.Y))
+                bool possible = true;
+                foreach (var (nw, se) in impossibleAreas)
+                {
+                    if (startX <= nw.X && endX >= se.X && startY <= nw.Y && endY >= se.Y)
+                    {
+                        possible = false;
+                        break;
+                    }
+                }
+                if (!possible)
                     continue;
 
-                if (!tiles.Any(tile => tile.X > startX && tile.X < endX && tile.Y > startY && tile.Y < endY))
+                foreach (var (x, y) in tilesSpan)
+                {
+                    if (x > startX && x < endX && y > startY && y < endY)
+                    {
+                        possible = false;
+                        impossibleAreas.Add(((startX, startY), (endX, endY)));
+                        break;
+                    }
+                }
+                if (possible)
                 {
                     long width = endX - startX + 1;
                     long height = endY - startY + 1;
@@ -74,10 +94,9 @@ internal class Puzzle(string rawInput) : AocPuzzle<Coord[], long>(rawInput)
                     if (area > result)
                         result = area;
                 }
-                else
-                    impossibleAreas.Add(((startX, startY), (endX, endY)));
             }
         }
+
         return result;
     }
 }
