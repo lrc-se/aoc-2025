@@ -103,6 +103,12 @@ Part 1 was as simple as they come, and part 2... not as much. I first tried both
 
 *(In progress)*
 
-### Day 11
+### Day 11 (C#)
 
 Well, this was rather easy since it's basically just another path-traversal-with-memoization problem. For part 2 I first tried adding some conditions before realizing that the solution is simply a combination of sub-paths, which the memo-counter from part 1 could already solve in a jiffy. Good times. (Note that part 2 requires test input 2.)
+
+### Day 12 (C# + x64-asm)
+
+Ho, boy. Since the underlying bin packing problem is NP-complete one must employ some sort of heuristic to achieve workable computation times, so I thought about coming up with combinations of the shapes that would maximize space use, and then implementing some sort of iterative process based on such clusters. Eventually I also thought about actually checking the extremely basic case where each present occupies a full 3x3 square first – and wouldn't you know it, but the full input was structured in such a way that this was in fact the answer! Palm, meet face.
+
+Since the computation therefore becomes extremely simple I decided to do it in branch-less, division-less assembly just for the heck of it as an interop exercise, with some accommodations on the managed side for a simpler memory layout. Do note, however, that the test input fails since clusters *are* expected there, but given the huge misdirect I don't feel particularly guilty about it...
