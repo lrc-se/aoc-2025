@@ -99,9 +99,9 @@ Using a running map of individual connections and a queue-based method of genera
 
 Part 1 was as simple as they come, and part 2... not as much. I first tried both flood fill and edge crossing approaches, which turned out too slow and/or memory hungry, before realizing that I only needed to check the interior of the candidate rectangles for the presence of *any* edge. My first attempt at this was quite slow, but after a number of iteration-reducing additions and finally some micro-optimizations it's down to sub-second speeds. Whew.
 
-### Day 10
+### Day 10 (C#)
 
-*(In progress)*
+Part 1 was just combinatorics and bit operations, so no biggie. Part 2, however, gave me the most trouble of all the puzzles this year. I hacked away at the problem from a mathematical angle, viewing it as equation systems with a variable number of unknowns represented in matrix form, but actually arriving at an implementation that got all the boundary conditions correct for the full input took quite some time. In the end the algorithm consists of Gauss-Jordan elimination followed by a recursive check of possible values for any and all remaining free parameters, with heavy use of LINQ. There are probably better ways, but this one is actually quite fast and has the virtue of providing the correct answer – which was also the *final* answer I needed, so: ha!
 
 ### Day 11 (C#)
 
@@ -112,3 +112,9 @@ Well, this was rather easy since it's basically just another path-traversal-with
 Ho, boy. Since the underlying bin packing problem is NP-complete one must employ some sort of heuristic to achieve workable computation times, so I thought about coming up with combinations of the shapes that would maximize space use, and then implementing some sort of iterative process based on such clusters. Eventually I also thought about actually checking the extremely basic case where each present occupies a full 3x3 square first – and wouldn't you know it, but the full input was structured in such a way that this was in fact the answer! Palm, meet face.
 
 Since the computation therefore becomes extremely simple I decided to do it in branch-less, division-less assembly just for the heck of it as an interop exercise, with some accommodations on the managed side for a simpler memory layout. Do note, however, that the test input fails since clusters *are* expected there, but given the huge misdirect I don't feel particularly guilty about it...
+
+
+Conclusion
+----------
+
+TBA
