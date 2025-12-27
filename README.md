@@ -98,3 +98,11 @@ Using a running map of individual connections and a queue-based method of genera
 ### Day 9 (C#)
 
 Part 1 was as simple as they come, and part 2... not as much. I first tried both flood fill and edge crossing approaches, which turned out too slow and/or memory hungry, before realizing that I only needed to check the interior of the candidate rectangles for the presence of *any* edge. My first attempt at this was quite slow, but after a number of iteration-reducing additions and finally some micro-optimizations it's down to sub-second speeds. Whew.
+
+### Day 10
+
+*(In progress)*
+
+### Day 11
+
+Well, this was rather easy since it's basically just another path-traversal-with-memoization problem. For part 2 I first tried adding some conditions before realizing that the solution is simply a combination of sub-paths, which the memo-counter from part 1 could already solve in a jiffy. Good times. (Note that part 2 requires test input 2.)
