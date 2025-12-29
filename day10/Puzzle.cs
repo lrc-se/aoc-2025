@@ -167,17 +167,7 @@ internal class Puzzle(string rawInput) : AocPuzzle<Machine[], long>(rawInput)
             int curIndex = freePresses.Length;
             if (curIndex == freeIndices.Length)
             {
-                int[] joltages = [..machine.Joltages];
-
-                int count = freePresses.Sum();
-                for (int i = 0; i < freePresses.Length; ++i)
-                {
-                    foreach (int joltageIndex in machine.Buttons[freeIndices[i]])
-                    {
-                        joltages[joltageIndex] -= freePresses[i];
-                    }
-                }
-
+                int count = 0;
                 foreach (var row in rows)
                 {
                     double val = row[^1];
@@ -191,15 +181,9 @@ internal class Puzzle(string rawInput) : AocPuzzle<Machine[], long>(rawInput)
                         return;
 
                     count += (int)rounded;
-                    int buttonIndex = row.IndexOf(1);
-                    foreach (int joltageIndex in machine.Buttons[buttonIndex])
-                    {
-                        joltages[joltageIndex] -= (int)rounded;
-                    }
                 }
 
-                if (!joltages.AsSpan().ContainsAnyExcept(0))
-                    lowestCount = Math.Min(count, lowestCount);
+                lowestCount = Math.Min(count + freePresses.Sum(), lowestCount);
             }
             else
             {
