@@ -117,4 +117,12 @@ Since the computation therefore becomes extremely simple I decided to do it in b
 Conclusion
 ----------
 
-TBA
+Well, this was indeed a different year, where the (more than) halved puzzle count made for noticeable changes. For starters, the average difficulty seemed higher, at least during the early days compared to previous years, which isn't too surprising. Moreover, there were several typical puzzle types we have come to expect that were wholly absent, and connections to specific algorithms or mathematical concepts felt somewhat more niche.
+
+On the other hand, it was refreshing *not* to have the full run extend well into Yule proper, especially with the typical sharp increase in difficulty towards the end, which made for a calmer second half of the month. On the third hand there were a couple of puzzles which spilled over anyway, as is their wont, where that wild goose chase on day 12 was... *naughty*.
+
+I also noted that the puzzles were even less suited for a fully functional approach than usual, at least for me, so only one F# solution this time around. The x64-asm setup I had so carefully concocted also went largely unused due to intricacies in data structures and algorithms, where it felt either too complex to shift the whole thing to native code or too simple just to offload small parts. I actually *did* have a working part-assembly solution for day 6 at one point, but as it turned out to involve quite a bit of hoop-jumping for no particular reason I scrapped it in the end. However, I did learn a lot just from doing the template and exercise, doubling down on optimizations and branch reduction, so yeah.
+
+Aaand that's that, I guess. Although it took much longer than the actual twelve days to get all the stars, partly due to external factors, I got there in the end again, with no solution feeling overly hacky, or slow. To wit, if we discount CLR startup time only a handful of parts run longer than 100ms or so, with none breaking the one-second barrier, making for a total execution time well below three seconds for all puzzles. Not half bad.
+
+Bring on 2026!
